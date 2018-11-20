@@ -107,11 +107,11 @@ hexo搭建blog, 涉及npm, git, github
     2. [[https://help.github.com/articles/using-a-custom-domain-with-github-pages/][www.wcq.fun绑定教程]]
 ** 鼠标点击小心心效果
    1. 在themes/next/source/js/src/下新建love.js文件
-      并且copy下面代码到love.js中
+      并且[[file:hexo/love.txt][copy下面的代码]]到love.js中
    2. 在themes/next/layout/_layout.swig末尾添加以下代码:
       #+BEGIN_EXAMPLE
       <!-- 页面点击小红心 -->
-      <script type="text/javascript" src="/js/src/clicklove.js"></script>
+      <script type="text/javascript" src="/js/src/love.js"></script>
       #+END_EXAMPLE
       
 * hexo怎么工作的
