@@ -32,6 +32,7 @@
 	 #+BEGIN_EXAMPLE
 	 defaults write com.apple.dock ResetLaunchPad -bool TRUE;killall Dock
 	 #+END_EXAMPLE
+	 慎用: 该指令重启launchpad的时候, 也会使launchpad的排序恢复默认值!!!
    2. 添加空白到Dock栏
       空白能使Dock中的程序更好的归类
       #+BEGIN_EXAMPLE
@@ -234,3 +235,60 @@
 ** | && xargs
    1. 管道是实现“将前面的标准输出作为后面的标准输入”
    2. xargs是实现“将标准输入作为命令的参数”
+** mac卡顿处理
+   1. 删除Macintosh HD/系统/资源库/Caches中的文件
+   2. 删除Macintosh HD/资源库/Caches中的文件
+** 安装gcc (g++)
+   mac上默认的gcc(g++)实际是苹果的Apple LLVM. 不是说这个不好, 而是很多时候gnu的gcc对于c++更标准些(待商榷?).
+
+   1. 安装[[https://www.macports.org/install.php][port]]
+   2. 搜索gcc
+      #+BEGIN_EXAMPLE
+      port search gcc
+      #+END_EXAMPLE
+   3. 安装gcc
+      #+BEGIN_EXAMPLE
+      sudo port install gcc8 #这里选了最新的稳定版
+      #+END_EXAMPLE
+      不要使用brew安装, 不然后面无法使用port指定苹果的gcc版本
+   4. 查看安装的版本
+      #+BEGIN_EXAMPLE
+      port select --list gcc
+      #+END_EXAMPLE
+   5. 切换版本
+      #+BEGIN_EXAMPLE
+      sudo prot select --set gcc mp-gcc8
+      #+END_EXAMPLE
+   6. 清空bash缓存
+      #+BEGIN_EXAMPLE
+      hash -r
+      #+END_EXAMPLE
+      查看gcc版本
+      #+BEGIN_EXAMPLE
+      gcc -v ## 或g++ -v
+      #+END_EXAMPLE
+** 实用快捷键
+   | 快捷键               | 功能说明 | 备注                  |
+   |----------------------+----------+-----------------------|
+   | Command + c          | 选中文件 |                       |
+   |----------------------+----------+-----------------------|
+   | Command + v          | 粘贴     | Command-c之后才能操作 |
+   |----------------------+----------+-----------------------|
+   | Command + option + v | 剪切     | Command-c之后才能操作 |
+   |----------------------+----------+-----------------------|
+   | Command + 空格       | 聚焦搜索 | 非常好用的搜索        |
+   |----------------------+----------+-----------------------|
+** 无用程序关闭
+   1. 聚焦
+      作用: Command+空格的 聚焦搜索
+      影响进程: mds、mds_stores、mdworker
+      关闭原因: 实际没必要, 追求效率的, 可以关掉
+      #+BEGIN_EXAMPLE
+      #关闭
+      sudo mdutil -a -i off
+      
+      #打开
+      sudo mdutil -a -i on
+      #+END_EXAMPLE
+
+
