@@ -238,6 +238,7 @@
 ** mac卡顿处理
    1. 删除Macintosh HD/系统/资源库/Caches中的文件
    2. 删除Macintosh HD/资源库/Caches中的文件
+   3. 如果以上无效, 建议更换操作系统版本, 比如从macOS high sierra更换为macOS Mojave
 ** 安装gcc (g++)
    mac上默认的gcc(g++)实际是苹果的Apple LLVM. 不是说这个不好, 而是很多时候gnu的gcc对于c++更标准些(待商榷?).
 

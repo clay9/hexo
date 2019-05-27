@@ -53,6 +53,10 @@ hexo搭建blog, 涉及npm, git, github
       hexo init
       #+END_EXAMPLE
 
+
+   注意事项:
+   hexo命令(例如hexo g) 应该在 hexo init所在目录下使用(上面中是blog目录)
+
 ** hexo配置
    1. [[https://hexo.io/zh-cn/docs/configuration][基本配置]]
    2. [[http://theme-next.iissnan.com/getting-started.html][主题配置:next]]
