@@ -87,6 +87,7 @@
 	    "~/GTD/task.org"
 	    "~/GTD/habit.org"
 	    "~/GTD/project.org"
+	    "~/GTD/archive.org"
 	    "~/GTD/trash.org"));;因四象限屏蔽掉archive.org
 
  ;; (dir) - Org mode - Agenda Vies - Built_in agenda views - Weekly/daily agenda
@@ -114,8 +115,16 @@
 
  ;; (dir) - Org mode - Agenda Views - Custom agenda views
 (setq org-agenda-custom-commands
-      '(("a" "agenda && waiting"
+      '(("a" "agenda"
 	 ((agenda)))
+	;inbox文件
+	("i" "Inbox"
+	 ((tags "+LEVEL=1-important-urgent"
+		((org-agenda-overriding-header "Inbox Things -- origin")))
+	  (tags "+LEVEL=1+important|urgent"
+		((org-agenda-overriding-header "Inbox Things -- marked")))
+	  )
+	 ((org-agenda-files '("~/GTD/inbox.org"))))
 	;四象限 project
 	("p" "Project 四象限"
 	 ((tags-todo "+important+urgent/PROJECT"
@@ -138,12 +147,18 @@
 		((org-agenda-overriding-header "TAG 第四象限"))))
 	 ((org-agenda-files '("~/GTD/task.org"))
 	  (org-agenda-overriding-header "Inbox")))
-	;场景
+	;next step
 	("n" "Next Step"
 	 ((todo "TODO"
 		((org-agenda-overriding-header "TODO")))
 	  (todo "WAITING"
-		((org-agenda-overriding-header "WAITING")))))))
+		((org-agenda-overriding-header "WAITING")))))
+	;task DONE
+	("d" "task :: DONE"
+	 ((tags "+LEVEL=1+TODO=\"DONE\""
+		((org-agenda-overriding-header "task :: DONE"))))
+	 ((org-agenda-files '("~/GTD/task.org"))))
+	))
 
  ;; others M-x customize group
 (setq org-agenda-hide-tags-regexp

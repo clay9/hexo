@@ -70,6 +70,18 @@ hexo搭建blog, 涉及npm, git, github
    - Emacs line的版本要 >= 24
    - org-mode的版本最好 >= 9.0
 
+*** 文件链接
+    hexo-renderer-org支持使用org-mode的文件链接方式.
+    但是有一定的限制.
+
+    如果要发布的org文件的名字为A.org. 那么:
+
+    1. A.org中链接的文件必须放在A目录下, 且A目录与A.org同级.
+    2. A.org中链接文件格式为: 
+       #+BEGIN_EXAMPLE
+       file:A/文件名字
+       #+END_EXAMPLE
+
 ** hexo部署
    hexo支持多渠道发布, [[https://hexo.io/zh-cn/docs/deployment][具体看官网]], 这里只说发布到github
 
