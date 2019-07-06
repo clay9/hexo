@@ -1,0 +1,80 @@
+#+TITLE: Hydra-mode
+#+LAYOUT: post
+#+CATEGORIES: gnu
+#+TAGS: gnu,emacs,Hydra-mode
+
+Hydra-mode是非常好用的emacs键位管理工具
+
+#+HTML: <!-- more -->
+* 为什么需要键位管理工具
+  emacs本身键位繁琐, 安装mode之后, 键位问题更加突出. 
+  每个mode基本都有mode-map, 包含数不清的按键.
+  而人能记住的按键是有限的.
+
+  比如artist-mode中, 部分常用键位如下
+  | 图形      | 简述     | 命令      | 备注       |
+  |-----------+----------+-----------+------------|
+  | line      | 线段     | C-c C-a l |            |
+  |-----------+----------+-----------+------------|
+  | proy line | 直线     | C-c C-a p |            |
+  |-----------+----------+-----------+------------|
+  | 四边形    | rectngle | C-c C-a r |            |
+  |-----------+----------+-----------+------------|
+  | 正方形    | squares  | C-c C-a s |            |
+  |-----------+----------+-----------+------------|
+  | 椭圆      | elipse   | C-c C-a e |            |
+  |-----------+----------+-----------+------------|
+  | 圆        | circle   | C-c C-a c |            |
+  |-----------+----------+-----------+------------|
+  | 水雾      | spray    | C-c C-a S |            |
+  |-----------+----------+-----------+------------|
+
+  我们期望的不是去记住这么多按键, 而是希望敲入一个按键之后, 在一个新buffer中显示所有按键.
+  比如键入C-@之后, 底方buffer显示
+  #+BEGIN_EXAMPLE
+  _o_: 起点
+  _l_: 线      _p_: 直线
+  _r_: 四边形  _s_: 正方形
+  _e_: 椭圆    _c_: 圆
+  _y_: 水雾
+  #+END_EXAMPLE
+  这样, 就无需去记忆这么多不同按键, 我只需要记住C-@可以呼唤出一个这样的菜单栏即可.
+* 什么是Hydra-mode
+  Hydra-mode就是解决emacs + mode带来的按键问题.
+  
+  Hydra-mode完美实现了我们上面问题中的期望.
+* 配置
+  package-list-packages中安装hydra-mode即可
+* 使用
+  Hydra-mode语法非常简单,
+  以artist-mode举例:
+  #+BEGIN_EXAMPLE
+  ;;调用hydra接口自定义函数
+  (defhydra hydra-artist-mode (:color blue
+    :hint nil)
+    ;;设置new buffer中的提示样式
+    "
+    _o_: 起点
+    _l_: 线      _p_: 直线
+    _r_: 四边形  _s_: 正方形
+    _e_: 椭圆    _c_: 圆
+    _y_: 水雾
+    "
+    
+    ;;设置对应按键相应的function动作
+    ("o" artist-key-set-point)
+
+    ("l" artist-select-op-line)
+    ("p" artist-select-op-poly-line)
+
+    ("r" artist-select-op-rectangle)
+    ("s" artist-select-op-square)
+
+    ("e" artist-select-op-ellipse)
+    ("c" artist-select-op-circle)
+
+    ("y" artist-select-op-spray-can))
+
+    ;;在global-map中注册我们的函数 + 按键
+    (global-set-key (kbd "C-@")  'hydra-artist-mode/body) ;;如何在lisp map中添加元素
+  #+END_EXAMPLE

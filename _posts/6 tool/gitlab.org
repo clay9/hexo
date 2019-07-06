@@ -55,6 +55,12 @@ Docker安装gitlab
 
 * gitlab高级用法
   TODONOW 待补充
-* gitlab原理
-  TODONOW 待学习
-
+* 常见问题
+  1. KiteMatic 卡在Starting Docker VM界面
+     
+     解决办法:
+     1) 完全关闭 KietMatic 和 Docker进程
+     2) 下载 [[file:gitlab/reset][reset脚本]]
+     3) 打开命令行, 执行 ./reset
+     4) 启动Docker
+     5) 启动KiteMatic

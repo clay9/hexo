@@ -38,6 +38,8 @@
       #+BEGIN_EXAMPLE
       defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'; killall Dock
       #+END_EXAMPLE
+** 状态栏调整
+   按住Command之后, 鼠标可以拖动状态栏图标
 ** 输入法的整理
    习惯了搜狗输入法, 并且不喜欢多余的输入法. 因此安装完搜狗输入法for mac之后, 删除mac自带输入法. 具体步骤:
    1. 关闭 mac 系统的 SIP
