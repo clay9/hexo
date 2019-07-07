@@ -1,11 +1,12 @@
 
- ;; ******************
- ;; org-mode
+;; ******************
+;; org-mode
 ;; ******************
 
 ;; agenda的出现模式
 (setq org-agenda-window-setup 'current-window)
 
+ ;; 编辑折叠的内容时候 提示错误
  ;; (dir) - Org mode - Document Structure - Visibility cycling - Catching invisible edits
 (setq org-catch-invisible-edits 'error)
 
@@ -40,6 +41,7 @@
 (setq org-tags-match-list-sublevels 'nil)
 (setq org-use-tag-inheritance 'nil)
 
+ ;; 不再使用urgent + important表示四象限, 使用org中priority代替
  ;; (dir) - Org mode - Tags - Setting tags
 (setq org-tag-alist
       '((:startgroup . nil)
@@ -64,9 +66,10 @@
 
  ;; (dir) - Org mode - Capture_Refile_Archive - Refile and copy
 (setq org-refile-targets
-      (quote(("~/GTD/task.org" :level . 1)
-	     ("~/GTD/project.org" :level . 2)
-	     ("~/GTD/trash.org" :level . 1))))
+      '(("~/GTD/task.org" :maxlevel . 1)
+	("~/GTD/project.org" :maxlevel . 2)
+	("~/GTD/trash.org" :level . 1)))
+
 (setq org-refile-use-outline-path 'file)
 (setq org-reverse-note-order t)
 (setq org-log-refile (quote nil))
@@ -88,7 +91,7 @@
 	    "~/GTD/habit.org"
 	    "~/GTD/project.org"
 	    "~/GTD/archive.org"
-	    "~/GTD/trash.org"));;因四象限屏蔽掉archive.org
+	    "~/GTD/trash.org"))
 
  ;; (dir) - Org mode - Agenda Vies - Built_in agenda views - Weekly/daily agenda
 (setq org-agenda-include-diary t)
@@ -110,60 +113,93 @@
 (setq org-agenda-tags-todo-honor-ignore-options 't)
 (setq org-agenda-todo-list-sublevels 'nil)
 
- ;; (dir) - Org mode - Agenda Views - Presentation and sortind - Time of day specifications
-;(setq org-agenda-time-grid '((daily today) "----------------" (800 1000 1200 1400 1600 1800 2000)))
+;; others M-x customize group
+;; 屏蔽agenda中tag的显示
+(setq org-agenda-hide-tags-regexp
+      "company\\|home\\|urgent\\|important\\|habit")
 
- ;; (dir) - Org mode - Agenda Views - Custom agenda views
+ ;; 设置agenda中 时间样式表
+ ;; (dir) - Org mode - Agenda Views - Presentation and sortind - Time of day specifications
+(setq org-agenda-time-grid '((daily today) (1100 1400 1800 2000) "..... " "----------------"))
+
+;; 设置Schedule 和 Deadline的提示样式
+(setq org-agenda-scheduled-leaders '("Start" "Start %2dd"));
+(setq org-agenda-deadline-leaders '("Dead" "In %3dd" "Dead %2dd"));
+
+;; 设置Priority[min, max] && default priority
+(setq org-highest-priority ?A)
+(setq org-lowest-priority  ?D)
+(setq org-default-priority ?D)
+(setq org-priority-faces
+      '((?A . (:background "" :foreground "red" :weight bold))
+        (?B . (:background "" :foreground "DarkOrange" :weight bold))
+        (?C . (:background "" :foreground "yellow" :weight bold))
+        (?D . (:background "" :foreground "DodgerBlue" :weight bold))
+        ))
+
+;; 设置agenda中bulk mark时候的标志
+(setq org-agenda-bulk-mark-char "x")
+
+;; 扩展agenda中bulk 操作命令
+(setq org-agenda-bulk-custom-functions
+      '((?w org-agenda-refile)
+	(?y org-agenda-archive)
+	))
+
+;; 供org-agenda-custom-commands调用, 判断item数目 -- 暂时无用
+(setq inbox_item_id 0)
+(defun foo (id)
+  (setq id (1+ id))
+  (format "%d." id))
+
+;; (dir) - Org mode - Agenda Views - Custom agenda views
 (setq org-agenda-custom-commands
-      '(("a" "agenda"
-	 ((agenda)))
+      '(
+	; agent && main task
+	("a" "agenda"
+	 ((agenda "+TODO=\"TODO\""))
+	 ((org-agenda-prefix-format "%?-7t%-12:s ")
+	  (org-agenda-sorting-strategy
+	   '(time-up todo-state-up scheduled-up deadline-up priority-up))))
 	;inbox文件
 	("i" "Inbox"
-	 ((tags "+LEVEL=1-important-urgent"
-		((org-agenda-overriding-header "Inbox Things -- origin")))
-	  (tags "+LEVEL=1+important|urgent"
-		((org-agenda-overriding-header "Inbox Things -- marked")))
-	  )
-	 ((org-agenda-files '("~/GTD/inbox.org"))))
-	;四象限 project
-	("p" "Project 四象限"
-	 ((tags-todo "+important+urgent/PROJECT"
-		     	 ((org-agenda-overriding-header "第一象限")))
-	  (tags-todo "+important-urgent/PROJECT"
-		     	 ((org-agenda-overriding-header "第二象限")))
-	  (tags-todo "-important+urgent/PROJECT"
-		     	 ((org-agenda-overriding-header "第三象限")))
-	  (tags-todo "-important-urgent/PROJECT"
-		     ((org-agenda-overriding-header "第四象限")))))
-	;四象限 todo (仅限task.org)
+	 ((tags "+LEVEL=1"
+		((org-agenda-overriding-header "Inbox Things"))))
+	 ((org-agenda-files '("~/GTD/inbox.org"))
+	  (org-agenda-sorting-strategy
+	   '(priority-down alpha-up effort-up))
+	  (org-agenda-prefix-format "%-10:s "))) ;inbox中不存在Schedule, 这么写只是为了前面空格而已
+	;四象限 todo
 	("f" "TAGS 四象限"
-	 ((tags "+important+urgent+LEVEL=1-TODO=\"TODO\"-TODO=\"WAITING\"-TODO=\"CANCEL\"-TODO=\"DONE\""
-		((org-agenda-overriding-header "TAG 第一象限")))
-	  (tags "+important-urgent+LEVEL=1-TODO=\"TODO\"-TODO=\"WAITING\"-TODO=\"CANCEL\"-TODO=\"DONE\""
-		((org-agenda-overriding-header "TAG 第二象限")))	
-	  (tags "-important+urgent+LEVEL=1-TODO=\"TODO\"-TODO=\"WAITING\"-TODO=\"CANCEL\"-TODO=\"DONE\""
-		((org-agenda-overriding-header "TAG 第三象限")))	  
-	  (tags "-important-urgent+LEVEL=1-TODO=\"TODO\"-TODO=\"WAITING\"-TODO=\"CANCEL\"-TODO=\"DONE\""
-		((org-agenda-overriding-header "TAG 第四象限"))))
-	 ((org-agenda-files '("~/GTD/task.org"))
-	  (org-agenda-overriding-header "Inbox")))
+	 ;; Project
+	 ((tags-todo "+TODO=\"PROJECT\""
+		     ((org-agenda-overriding-header "Project")
+		      (org-agenda-todo-ignore-scheduled 'nil)
+		      (org-agenda-todo-ignore-deadlines 'nil)
+		      (org-agenda-todo-ignore-timestamp 'nil)
+		      (org-agenda-prefix-format "%?-12t%-10:s")
+		      (org-agenda-sorting-strategy
+		       '(priority-down alpha-up effort-up))
+		      (org-agenda-files '("~/GTD/project.org"))))
+	  ;; Task
+	  (tags "+LEVEL=1-TODO=\"TODO\"-TODO=\"WAITING\"-TODO=\"CANCEL\"-TODO=\"DONE\""
+		((org-agenda-overriding-header "TAG")
+		 (org-agenda-prefix-format "%-10:s ")
+		 (org-agenda-sorting-strategy
+		  '(priority-down alpha-up effort-up))
+		 ;(org-agenda-block-separator "")
+		 (org-agenda-files '("~/GTD/task.org"))))))
 	;next step
 	("n" "Next Step"
 	 ((todo "TODO"
 		((org-agenda-overriding-header "TODO")))
 	  (todo "WAITING"
-		((org-agenda-overriding-header "WAITING")))))
-	;task DONE
-	("d" "task :: DONE"
-	 ((tags "+LEVEL=1+TODO=\"DONE\""
-		((org-agenda-overriding-header "task :: DONE"))))
-	 ((org-agenda-files '("~/GTD/task.org"))))
-	))
-
- ;; others M-x customize group
-(setq org-agenda-hide-tags-regexp
-      "company\\|home\\|urgent\\|important\\|habit")
-
+		((org-agenda-overriding-header "WAITING"))))
+	 ((org-agenda-prefix-format "%-10:c")
+	  (org-agenda-sorting-strategy
+	   '(priority-down alpha-up effort-up))
+	  (org-agenda-todo-keyword-format "")
+	  ))))
 
 ;; ****************
 ;; color && format
@@ -191,6 +227,9 @@
 ;; ****************
 ;; 设置启动界面
 ;; ****************
+(defun my_org_agenda_start
+    (org-agenda-custom-commands  "\C-c a a")
+  )
 (org-agenda-list)
 (delete-other-windows)
 
