@@ -78,11 +78,10 @@
 (setq org-archive-location "~/GTD/archive.org::* Finished Tasks")
 
 (setq org-agenda-sorting-strategy
-      (quote ((agenda time-up habit-up todo-state-up scheduled-down deadline-down)
+      (quote ((agenda time-up todo-state-up scheduled-up deadline-up priority-up)
               (todo priority-down category-keep)
               (tags priority-down category-keep)
               (search category-keep))))
-
 
  ;; (dir) - Org mode - Agenda views - Agenda files
 (setq org-agenda-files
@@ -142,8 +141,9 @@
 
 ;; 扩展agenda中bulk 操作命令
 (setq org-agenda-bulk-custom-functions
-      '((?w org-agenda-refile)
+      '((?w org-agenda-refile) 
 	(?y org-agenda-archive)
+	(?, org-agenda-priority)
 	))
 
 ;; 供org-agenda-custom-commands调用, 判断item数目 -- 暂时无用
@@ -227,10 +227,11 @@
 ;; ****************
 ;; 设置启动界面
 ;; ****************
-(defun my_org_agenda_start
-    (org-agenda-custom-commands  "\C-c a a")
-  )
+(setq org-agenda-prefix-format "%?-7t%-12:s ")
 (org-agenda-list)
 (delete-other-windows)
+
+;; 加载重载函数
+(require 'init-org-mode-fun)
 
 (provide 'init-org-mode)

@@ -46,6 +46,31 @@ emacs绘图mode, artist-mode && graphviz-mode
      |-----------+----------+-----------+------------|
    3. 改键(Hydra-mode)后快捷键 C-@
       : 强推Hydra-mode用来改建
+      #+BEGIN_EXAMPLE
+      (require 'artist)
+      (defhydra hydra-artist-mode (:color blue
+      :hint nil)
+      "
+      _o_: 起点,终点
+      _l_: 线      _p_: 直线
+      _r_: 四边形  _s_: 正方形
+      _e_: 椭圆    _c_: 圆
+      _y_: 水雾
+      "
+      ("o" artist-key-set-point)
+ 
+      ("l" artist-select-op-line)
+      ("p" artist-select-op-poly-line)
+ 
+      ("r" artist-select-op-rectangle)
+      ("s" artist-select-op-square)
+ 
+      ("e" artist-select-op-ellipse)
+      ("c" artist-select-op-circle)
+ 
+      ("y" artist-select-op-spray-can))
+      (global-set-key (kbd "C-@")  'hydra-artist-mode/body)
+      #+END_EXAMPLE
 
 * graphviz-mode
 ** 配置
