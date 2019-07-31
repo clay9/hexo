@@ -28,6 +28,7 @@
 * 配置
   [[file:init-compilation-mode.el][具体配置文件]]
 * 使用
+  M-x compile RET 开始编译
   快捷键配置如下
   #+BEGIN_EXAMPLE
   ;;下个错误
