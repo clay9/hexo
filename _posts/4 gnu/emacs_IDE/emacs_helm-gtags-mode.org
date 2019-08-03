@@ -54,6 +54,15 @@ global的font-ends.
      |------------------------+----------------------------|
      #+END_EXAMPLE
   
+* gtags简易指令
+  1. .h文件默认为c的, 需要增加以下设置, 使其识别为c++的
+     #+BEGIN_EXAMPLE
+     export GTAGSFORCECPP=""
+     #+END_EXAMPLE
+  2. 有些文件是不需要去解析的, 比如protobuf生成的XX.pd.h XX.pd.c
+     增加gtags.files文件. 这样gtags就会只解析在该文件内的
+
+
 * global简易指令
   指令说明:
   #+BEGIN_EXAMPLE

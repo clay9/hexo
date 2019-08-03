@@ -191,4 +191,4 @@ GTD思想 && org-mode实现GTD
    #+END_EXAMPLE
 
 * org mode的配置
-  [[file:org-mode/init-org-mode.el][详见配置文件]]
+  [[file:emacs_org-mode/init-org-mode.el][详见配置文件]]

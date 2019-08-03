@@ -22,4 +22,6 @@ elisp 简易教程
 #+HTML: <!-- more -->
 * 推荐文章
   1. [[http://smacs.github.io/elisp/02-elisp-basic.html][水木社区Emacs版]]
-  
+
+* 乱七八糟记录
+  1. lisp没有重载一说, 直接覆盖; 因此为了方便出现了 advise 函数
