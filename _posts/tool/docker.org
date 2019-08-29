@@ -1,0 +1,32 @@
+#+BEGIN_COMMENT
+| 名称       | 简述         | 取值               |
+|------------+--------------+--------------------|
+| TITLE      | 标题         |                    |
+|------------+--------------+--------------------|
+| LAYOUT     | hexo排版模式 | post               |
+|------------+--------------+--------------------|
+| CATEGORIES | 分类仓库     | IDE, gnu, protocal |
+|            |              | system, tool       |
+|------------+--------------+--------------------|
+| TAGS       | 标签         |                    |
+|------------+--------------+--------------------|
+#+END_COMMENT
+
+#+TITLE: docker
+#+LAYOUT: post
+#+CATEGORIES: tool
+#+TAGS: docker
+
+docker
+
+#+HTML: <!-- more -->
+* 功能  
+* 安装
+  1. 安装[[https://www.docker.com][docker]]
+  2. 安装[[https://github.com/docker/kitematic][Kitmatic]]
+     docker gui工具
+* 配置
+  1. 镜像配置
+     使用[[http://mirrors.ustc.edu.cn/help/dockerhub.html?highlight=docker][中国科技大学镜像加速]], 无须注册, 直接使用即可
+* 使用
+  1. 进入容器
