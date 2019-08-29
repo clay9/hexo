@@ -17,7 +17,7 @@
 #+CATEGORIES: gnu
 #+TAGS: elisp
 
-elisp 简易教程
+elisp简易教程
 
 #+HTML: <!-- more -->
 * 推荐文章
