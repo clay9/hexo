@@ -1,17 +1,3 @@
-#+BEGIN_COMMENT
-| 名称       | 简述         | 取值               | 备注                 |
-|------------+--------------+--------------------+----------------------|
-| TITLE      | 标题         |                    |                      |
-|------------+--------------+--------------------+----------------------|
-| LAYOUT     | hexo排版模式 | post               |                      |
-|------------+--------------+--------------------+----------------------|
-| CATEGORIES | 分类仓库     | IDE, gnu, protocal |                      |
-|            |              | system, tool       |                      |
-|------------+--------------+--------------------+----------------------|
-| TAGS       | 标签         |                    | gnu仓库的要打gun标签 |
-|------------+--------------+--------------------+----------------------|
-#+END_COMMENT
-
 #+TITLE: helm mode
 #+LAYOUT: post
 #+CATEGORIES: emacs
@@ -30,6 +16,20 @@
   2) M-x
   3) find-files
 * 配置
-  helm-mode的配置非常简单, [[file:emacs_helm_mode/init-helm-mode.el][具体配置文件]]
+  helm-mode的配置非常简单, 具体见github
 * 使用
   helm-mode没有特意的去改变用户的使用习惯, 只是提升了用户体验. 操作使用与之前一样即可
+* 函数介绍
+** helm-occur
+   查找全部
+** helm-browse-project
+   查看工程文件
+   绑定在了C-x C-b上
+** helm-filtered-bookmarks
+   书签
+** helm-compilation
+   归属于helm-mode. 重载了emac的compilation
+** helm-buffers-list
+   1. 输入" @XX", 过滤掉buffer
+      @XX前面有空格
+   2. 在所要查找的buffer中, C-s 调用helm-occur直接查找结果

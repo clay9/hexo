@@ -14,7 +14,7 @@
 
 #+TITLE: 正则表达式
 #+LAYOUT: post
-#+CATEGORIES: protocal
+#+CATEGORIES: protocol
 #+TAGS: regex
 
 正则表达式

@@ -1,6 +1,6 @@
 #+TITLE: 乱七八糟的协议合集
 #+LAYOUT: post
-#+CATEGORIES: protocal
+#+CATEGORIES: protocol
 #+TAGS: 
 
 协议太多, 不好分类, 真是乱七八糟
@@ -103,110 +103,4 @@
    第一个ip地址为  本机地址??????
    最后一个ip地址为广播地址
    这2个地址 被设计用来做其他事情, 设计的时候不应该考虑吧进去
-
-** socket
-   1. [ ] socket的缺点
-      1) 队列问题
-	 只能一个个处理, 导致后面的只能排队等待
-
-   2. [ ] socket的进阶
-      1) 多线程 -- 异步问题
-      2) 多进程 -- close问题
-      3) 半阻塞
-
-*** Socket由来
-    socket是应用层 与 传输层和网络层之间的一个抽象层
-    它的出现是为了简化网络进程通信
-*** 函数讲解
-    1. socket(domain, socket_type, protol)
-       domain
-       socket_type
-       protol
-       socket()本质是创建了一个进程文件表, 返回的值为指向进程文件表的指针的索引.
-    2. bind(fd, sockaddr*, len)
-       fd:        socket()中的文件表指针的索引
-       sockaddr:  地址, 端口
-       len:       sockaddr的长度
-       <1> 比较有意思的是sockaddr根据family的不同, 可以与不同的结构体互转
-           比如
-            AF_INET   sockaddr_in
-            AF_INET6  sockaddr_in6
-            AF_UNIX   sockaddr_un
-           这几种结构体都与sockaddr可互转(字节对齐blabla)
-       bind()本质是在补充socket()创建的文件表. socket()时候该文件表很多值都是空的, bind()来补充
-       因为client 在connect的时候, 系统会自动分配端口,以及绑定本机ip, 所以client的socket一般不必要
-       使用bind()
-    3. connet(fd, sockaddr*, len)
-       连接到其他scokaddr
-    4. listen(fd, iMaxNum)
-       一般只在server开启listen(), 监听指定的端口信息
-    5. accept()
-       accept()会造成阻塞.
-       它会将listen()中的sockaddr进行处理
-       处理流程是 accept()会创建一个新的fd_connet, 此fd_connet公用server socket() fd的端口和地址
-       但次fd_connect仅仅是用来传输数据的
-    6. recv(fd, msg)  send(fd, msg)
-       至accetp()时候, 一切操作就和在本地上操作一样,
-       所以这里的recv() 和 send()操作与本机上的文件操作是一样的
-    7. close(fd)  shutdown(fd, type)
-       linux一切皆是file原则, fd可以关闭
-
-*** 头文件
-     1. usr/include/x86_64-linux-gnu/sys/socket.h
-	结构体
-        sockaddr
-	函数
-        socket() connect() send() recv() close()
-	socket() bind()    lisent()  accept() recv() send() close()
-        g++的默认目录中已经包含了sys/的上层目录
-     2. usr/include/netinet/in.h
-	结构体
-        AF_INET  中的 sockaddr_in
-	AF_INET6 中的 sockaddr_in6
-	AF_UNIx  中的 sockaddr_un
-     3. user/include/arpa/inet.h
-	函数
-	htons()
-	inet_addr()
-
-*** Unix Program 卷一 心得
-    整本书讲了二部分,
-    一为如何正确的创建socket fd进程文件表
-    二为如何设计开发一个健壮的服务器|客户端程序
-
-**** socket fd
-     进程文件表主要有
-
-     | 名称 | 说明                                      | 备注                 |
-     |------+-------------------------------------------+----------------------|
-     | fd   | 文件描述符, 表的索引                      |                      |
-     |------+-------------------------------------------+----------------------|
-     | host | 1. 域名(DNS /etc/hosts) 2. ip地址         | 兼容Ipv4 Ipv6是难点  |
-     |------+-------------------------------------------+----------------------|
-     | 服务 | 1. 服务名称(/etc/services) 2. 端口        |                      |
-     |------+-------------------------------------------+----------------------|
-     | 协议 | 1. 传输层(/etc/protol) 2. 网络层          | 链路层用到的比较少   |
-     |------+-------------------------------------------+----------------------|
-     | 网络 | 1. 网络名称?(DNS /etc/networks) 2. ip地址 | 谁会使用到这些信息?? |
-     |------+-------------------------------------------+----------------------|
-
-     期间用到的函数主要有
-     注: 尽量使用ipv4, ipv6通用的函数
-     1. 流程函数
-	socket() bind() listen() connect() accept()等
-     2. 字节处理函数
-	处理大小字节序 htons() htonl() ntohs() ntohl()
-	处理域名与十分数字 getaddrinfo()  getnameinfo()
-     3. 处理sockaddr结构体的函数
-	getsockname() 返回ocal fd
-	getpeername() 返回remote fd
-	等
-
-**** 健壮的server | client程序
-     需要掌握:
-     1. 各协议的细节
-        比如tcp连接的三次握手, 四次close等
-     2. 操作系统缓冲区机制
-	主要影响 read() write()等读写操作
-     3. 进程, 线程, I/O操作 和 协议的结合
 

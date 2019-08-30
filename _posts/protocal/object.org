@@ -14,7 +14,7 @@
 
 #+TITLE: 静态库 && 动态库
 #+LAYOUT: post
-#+CATEGORIES: protocal
+#+CATEGORIES: protocol
 #+TAGS: lib
 
 linux下静态库 && 动态库

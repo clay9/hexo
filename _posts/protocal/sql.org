@@ -1,0 +1,14 @@
+#+TITLE: sqlserver && mysql对比
+#+LAYOUT: post
+#+CATEGORIES: protocol
+#+TAGS: 
+
+sqlserver 与 mysql对比
+#+HTML: <!-- more -->
+* 优缺点
+** sqlserver
+   
+** mysql
+   优点:
+   缺点:
+   1. 没有存储过程
