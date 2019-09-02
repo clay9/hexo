@@ -304,3 +304,17 @@
    2. source .bash_profile
    3. locale 查看下是否设置成功
    4. 完成
+** 头文件, 库文件, 运行文件变量
+   1. 头文件
+      针对于 编译器
+      1) g++
+         CPLUS_INCLUDE_PATH
+      2) gcc
+         C_INCLUDE_PATH
+   2. 库文件
+      1) 动态链接库搜索路径
+         LD_LIBRARY_PATH
+      2) 静态链接库搜索路径
+	 LIBRARY_PATH
+   3. 运行文件
+      PATH
