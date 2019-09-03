@@ -41,11 +41,6 @@ docker容器
      -t tty
      COMMAND 一般都是bash环境. 比如:
      docker container exec -it mysql bash
-
-
-     
-
-     
-     
-
-
+** 本机与docker容器交互
+   1. 文件传输
+      docker cp  test  mssql:/home

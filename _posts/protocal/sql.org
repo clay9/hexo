@@ -5,10 +5,23 @@
 
 sqlserver 与 mysql对比
 #+HTML: <!-- more -->
-* 优缺点
-** sqlserver
-   
-** mysql
+* sqlserver
+** 优缺点
+** Docker安装sqlserver
+   1. 搜索镜像 
+      docker search mssql
+   2. 安装镜像
+      docker pull microsoft/mssql-server-linux (这个是官网的)
+   3. 运行镜像, 创建容器
+      docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=passwd" -p 1433:1433 --name mssql -d microsoft/mssql-server-linux
+
+      注: 如果不指定映射的端口, 则可能随机使用一个端口
+   4. 进入容器
+      docker exec -it mssql bash
+   5. 测试sql server命令
+      /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "passwd"
+
+* mysql
    优点:
    缺点:
    1. 没有存储过程
