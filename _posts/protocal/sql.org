@@ -5,9 +5,21 @@
 
 sqlserver 与 mysql对比
 #+HTML: <!-- more -->
+
+* 数据库开发  
+** win下
+   [[https://www.bbsmax.com/A/kjdwDq7wzN/][详细解释]]
+   1. 原生接口
+   2. ODBC
+   3. OLE
+   4. ADO
+** linux下
+   1. 原生接口
+   2. ODBC
 * sqlserver
 ** 优缺点
 ** Docker安装sqlserver
+   [[https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker?view=sql-server-2017&pivots=cs1-bash][官方文档]]
    1. 搜索镜像 
       docker search mssql
    2. 安装镜像

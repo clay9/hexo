@@ -1,17 +1,3 @@
-#+BEGIN_COMMENT
-| 名称       | 简述         | 取值               |
-|------------+--------------+--------------------|
-| TITLE      | 标题         |                    |
-|------------+--------------+--------------------|
-| LAYOUT     | hexo排版模式 | post               |
-|------------+--------------+--------------------|
-| CATEGORIES | 分类仓库     | IDE, gnu, protocal |
-|            |              | system, tool,emacs |
-|------------+--------------+--------------------|
-| TAGS       | 标签         |                    |
-|------------+--------------+--------------------|
-#+END_COMMENT
-
 #+TITLE: C && C++ 常见库
 #+LAYOUT: post
 #+CATEGORIES: c++
@@ -19,6 +5,12 @@
 
 C && C++ 常见库
 #+HTML: <!-- more -->
+* 转换函数
+  c++11 支持
+  1. std::to_string(XX) 
+     XX 为int, short, long, longlong数值类型
+  2. std::stoi() 
+     同类型的有std::stol(), std::stoll()
 * 文件操作: fstream类
   C++类, 头文件:
   #include <fstream>
@@ -28,6 +20,12 @@ C && C++ 常见库
      fstream file;
   2. 打开文件
      file.open(file_name, mode)
+     mode:
+     - fstream::out  写: 内存->文件
+     - fstream::in   读: 文件->内存
+       当带有此模式的时候, 会默认认为文件存在, 
+       即使文件不存在, 也不会创建文件;
+       所以对于需要创建文件的场景, 应该不带此mode
   3. 读文件
      1) file >> string file_val
 	>> 遇到 空格 \n \r \t时候停止 -- 待确认TODONOW
