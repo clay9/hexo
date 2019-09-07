@@ -1,0 +1,46 @@
+#+TITLE: docker
+#+LAYOUT: post
+#+CATEGORIES: tool
+#+TAGS:
+
+docker容器
+
+#+HTML: <!-- more -->
+* 功能
+** 为什么需要docker
+** docker与虚拟机的对比
+  
+* 安装
+  1. 安装[[https://www.docker.com][docker]]
+  2. 安装[[https://github.com/docker/kitematic][Kitmatic]]
+     docker gui工具; 
+     不推荐使用
+* 配置
+  1. 镜像配置
+     使用[[http://mirrors.ustc.edu.cn/help/dockerhub.html?highlight=docker][中国科技大学镜像加速]], 无须注册, 直接使用即可
+* 使用
+  [[https://www.runoob.com/docker/docker-container-connection.html][推荐阅读教程]]
+** 镜像操作
+  1. 搜索镜像
+     docker search <image name>
+  2. 下载镜像
+     docker pull <image name>
+  3. 实例化镜像
+     镜像实例化为容器 (类比C++中的类--镜像,  对象--容器)
+     docker run -e "参数"  -P 端口映射 --name 容器名字
+** 容器操作
+  1. 查看容器
+     docker container ls -al
+  2. 启动 关闭 重启容器
+     docker container start | stop | restart  <container_id>
+  3. 重定义容器输出
+     docker container attach <container_id>
+  4. 进入到容器中
+     docker container exec -it <container_id>  COMMAND
+     -i interactive
+     -t tty
+     COMMAND 一般都是bash环境. 比如:
+     docker container exec -it mysql bash
+** 本机与docker容器交互
+   1. 文件传输
+      docker cp  test  mssql:/home

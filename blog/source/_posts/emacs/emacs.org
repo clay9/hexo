@@ -1,0 +1,10 @@
+#+TITLE: emacs
+#+LAYOUT: post
+#+CATEGORIES: emacs
+#+TAGS: emacs
+
+emacs 简述
+
+#+HTML: <!-- more -->
+* [[http://wcq.fun/org-info/emacs_com.html][emacs基础简介]]
+* [[http://wcq.fun/org-info/emacs_IDE.html][emacs打造IDE]]
