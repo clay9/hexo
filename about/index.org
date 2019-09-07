@@ -1,5 +1,0 @@
-
-
-[[http:../org-info-new/01.html][01]]
-
-[[http:../org-info-new/test.html][test]]
