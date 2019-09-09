@@ -1,17 +1,3 @@
-#+BEGIN_COMMENT
-| 名称       | 简述         | 取值               | 备注                 |
-|------------+--------------+--------------------+----------------------|
-| TITLE      | 标题         |                    |                      |
-|------------+--------------+--------------------+----------------------|
-| LAYOUT     | hexo排版模式 | post               |                      |
-|------------+--------------+--------------------+----------------------|
-| CATEGORIES | 分类仓库     | IDE, gnu, protocal |                      |
-|            |              | system, tool       |                      |
-|------------+--------------+--------------------+----------------------|
-| TAGS       | 标签         |                    | gnu仓库的要打gun标签 |
-|------------+--------------+--------------------+----------------------|
-#+END_COMMENT
-
 #+TITLE: elisp
 #+LAYOUT: post
 #+CATEGORIES: gnu
@@ -25,3 +11,19 @@ elisp简易教程
 
 * 乱七八糟记录
   1. lisp没有重载一说, 直接覆盖; 因此为了方便出现了 advise 函数
+* elisp 与 bash
+** bash调用elisp
+   1. elisp代码写入el文件
+   2. bash调用emacs执行el文件
+      #+BEGIN_EXAMPLE
+      emacs -u clay --script /Users/clay/.emacs.d/lisp/fun/init-hexo-fun.el
+      #+END_EXAMPLE
+** elisp调用bash
+   #+BEGIN_EXAMPLE
+   (setq my-command
+      (concat "IFS=: read -ra dirs <<<\"$PATH\"\n"
+              "for dir in ${dirs[@]}; do\n"
+              " echo got dir \"$dir\"\n"
+              "done\n"))
+   (shell-command (format "bash -c %s" (shell-quote-argument my-command)))
+   #+END_EXAMPLE

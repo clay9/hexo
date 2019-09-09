@@ -1,0 +1,11 @@
+#+TITLE: eshell
+#+LAYOUT: post
+
+eshell
+
+#+HTML: <!-- more -->
+* 功能
+* 配置
+* 使用
+* eshell脚本
+  
