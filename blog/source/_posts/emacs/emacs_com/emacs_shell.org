@@ -8,4 +8,19 @@ eshell
 * 配置
 * 使用
 * eshell脚本
+  官方不建议在eshell中写shell脚本, eshell脚本也是以.sh结尾
+** 变量赋值
+   eshell 脚本中使用elisp语法给变量赋值
+   #+BEGIN_EXAMPLE
+   (setq remote_temp "/ssh:clay@192.168.0.97:~/temp")
+   #+END_EXAMPLE
+** 变量使用 $
+   具体可以详见官方说明
+   基本与shell相同
+   #+BEGIN_EXAMPLE
+   eshell/rm -r $remote_temp
+   #+END_EXAMPLE
+
+
+
   
