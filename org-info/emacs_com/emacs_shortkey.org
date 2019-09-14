@@ -1,25 +1,8 @@
-#+BEGIN_COMMENT
-| 名称       | 简述         | 取值               | 备注                 |
-|------------+--------------+--------------------+----------------------|
-| TITLE      | 标题         |                    |                      |
-|------------+--------------+--------------------+----------------------|
-| LAYOUT     | hexo排版模式 | post               |                      |
-|------------+--------------+--------------------+----------------------|
-| CATEGORIES | 分类仓库     | IDE, gnu, protocal |                      |
-|            |              | system, tool       |                      |
-|------------+--------------+--------------------+----------------------|
-| TAGS       | 标签         |                    | gnu仓库的要打gun标签 |
-|------------+--------------+--------------------+----------------------|
-#+END_COMMENT
+#+TITLE: 快捷键
+#+INFOJS_OPT: path:../script/org-info.js
+#+INFOJS_OPT: toc:t ltoc:t
+#+INFOJS_OPT: view:info mouse:underline buttons:nil
 
-#+TITLE: Emacs快捷键
-#+LAYOUT: post
-#+CATEGORIES: emacs
-#+TAGS:
-
-Emacs快捷键整理
-
-#+HTML: <!-- more -->
 * Emacs快捷键一览
   部分自定义
 

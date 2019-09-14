@@ -1,9 +1,7 @@
 #+TITLE: eshell
-#+LAYOUT: post
-
-eshell
-
-#+HTML: <!-- more -->
+#+INFOJS_OPT: path:../script/org-info.js
+#+INFOJS_OPT: toc:t ltoc:t
+#+INFOJS_OPT: view:info mouse:underline buttons:nil
 * 功能
 * 配置
 * 使用
@@ -20,7 +18,5 @@ eshell
    #+BEGIN_EXAMPLE
    eshell/rm -r $remote_temp
    #+END_EXAMPLE
-
-
-
-  
+* eshell文档
+  1. https://linuxtoy.org/archives/emacs-eshell.html

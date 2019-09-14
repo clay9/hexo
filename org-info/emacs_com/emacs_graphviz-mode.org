@@ -1,11 +1,10 @@
 #+TITLE: artist mode && graphviz mode
-#+LAYOUT: post
-#+CATEGORIES: emacs
-#+TAGS:
+#+INFOJS_OPT: path:../script/org-info.js
+#+INFOJS_OPT: toc:t ltoc:t
+#+INFOJS_OPT: view:info mouse:underline buttons:nil
 
 emacs绘图mode, artist-mode && graphviz-mode
 
-#+HTML: <!-- more -->
 * 为什么需要artist-mode && graphviz-mode
   图形表达更直观, 形象.
   

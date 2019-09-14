@@ -1,11 +1,9 @@
 #+TITLE: org-mode
-#+LAYOUT: post
-#+CATEGORIES: emacs
-#+TAGS: 
+#+INFOJS_OPT: path:../script/org-info.js
+#+INFOJS_OPT: home:http://wcq.fun
+#+INFOJS_OPT: toc:t ltoc:t
+#+INFOJS_OPT: view:info mouse:underline buttons:nil
 
-org-mode
-
-#+HTML: <!-- more -->
 * 功能
 * 配置
 * 使用
@@ -141,5 +139,5 @@ org-mode
  			       	 | Mobile       |
                                  |              |
                                  +--------------+
-
-
+* org-mode与GTD
+  [[file:emacs_GTD.org][org-mode与GTD]]

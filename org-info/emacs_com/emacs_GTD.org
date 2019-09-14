@@ -1,10 +1,8 @@
 #+TITLE: GTD && org-mode
-#+LAYOUT: post
-#+CATEGORIES: emacs
-#+TAGS: org mode
+#+INFOJS_OPT: path:../script/org-info.js
+#+INFOJS_OPT: toc:t ltoc:t
+#+INFOJS_OPT: view:info mouse:underline buttons:nil
 
-GTD思想 && org-mode实现GTD
-#+HTML: <!-- more -->
 * 为什么要用GTD
   每天或每周需要处理的事情非常之多, 小到晚上要洗衣服, 大到明天项目交付. 这些事情如果都存储在脑中, 轻则
 焦虑不堪, 重则脑子爆炸. 而且脑中一旦塞满了这类事情, 非常不利于思考. 大脑应该是拿来思考的, 而不是用来存

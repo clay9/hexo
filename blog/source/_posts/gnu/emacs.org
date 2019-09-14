@@ -1,6 +1,6 @@
 #+TITLE: emacs
 #+LAYOUT: post
-#+CATEGORIES: emacs
+#+CATEGORIES: gnu
 #+TAGS: emacs
 
 emacs 简述
