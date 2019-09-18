@@ -1,9 +1,9 @@
-#+TITLE: sqlserver && mysql对比
+#+TITLE: 数据库开发
 #+LAYOUT: post
 #+CATEGORIES: protocol
 #+TAGS: 
 
-sqlserver 与 mysql对比
+数据库开发
 #+HTML: <!-- more -->
 
 * 数据库开发  

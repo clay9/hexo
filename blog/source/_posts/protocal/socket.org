@@ -1,17 +1,3 @@
-#+BEGIN_COMMENT
-| 名称       | 简述         | 取值               |
-|------------+--------------+--------------------|
-| TITLE      | 标题         |                    |
-|------------+--------------+--------------------|
-| LAYOUT     | hexo排版模式 | post               |
-|------------+--------------+--------------------|
-| CATEGORIES | 分类仓库     | IDE, gnu, protocal |
-|            |              | system, tool,emacs |
-|------------+--------------+--------------------|
-| TAGS       | 标签         |                    |
-|------------+--------------+--------------------|
-#+END_COMMENT
-
 #+TITLE: 常见网络编程
 #+LAYOUT: post
 #+CATEGORIES: protocol
@@ -155,3 +141,19 @@ socket相关网络编程
     1. 创建epoll对象
     2. 添加检视的fd对象 -- op, epoll_event 
     3. 检测是否有中断, 然后处理
+* socket问题
+** keep live机制
+   当socket服务端开启keep live之后, 
+   服务器检测到 _一定时间内_ socket不活动的时候,
+   就会每隔 _固定时间_ 向该sockt发送 _固定次数_ 的查询.
+   如果一直没有回应, 服务端则关闭该socket
+   
+   对应的字段为:
+   #+BEGIN_EXAMPLE
+   tcp_keepalive_time（开启keepalive的闲置时长） 
+   tcp_keepalive_intvl（keepalive探测包的发送间隔） 
+   tcp_keepalive_probes （如果对方不予应答，探测包的发送次数）
+   #+END_EXAMPLE
+   
+   
+

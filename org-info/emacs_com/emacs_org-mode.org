@@ -6,6 +6,10 @@
 
 * 功能
 * 配置
+** org-bullets
+   使org-mode更美观
+   1. 改变 **为图标
+   2. 改变省略号为⤵
 * 使用
 ** 基本语法
 *** 语法: time-stamp选择
@@ -45,6 +49,10 @@
     对table使用C-c} 可以查看行列值
     
 ** 导出
+   快捷键
+   #+BEGIN_EXAMPLE
+   C-c C-e
+   #+END_EXAMPLE
 ** org-info.js
    输出info-style xhtml
    [[https://orgmode.org/worg/code/org-info-js/][官方文档]]

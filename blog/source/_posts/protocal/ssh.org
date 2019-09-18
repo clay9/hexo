@@ -1,6 +1,6 @@
 #+TITLE: ssh
 #+LAYOUT: post
-#+CATEGORIES: protocal
+#+CATEGORIES: protocol
 #+TAGS: 
 
 ssh简述

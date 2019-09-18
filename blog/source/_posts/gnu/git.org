@@ -7,12 +7,9 @@ git简易指导, 个人使用心得
 #+HTML: <!-- more -->
 
 * git使用流程
-  TODONOW 待补充
 * git原理 && 常见命令
-  TODONOW 待补充
 * git高级特性
 ** git hooks
-   TODONOW 待补充
    [[https://blog.csdn.net/jessise_zhan/article/details/80131618][参考文档]]
 * F&Q
   1. 问: 命令行下的git status如何显示中文
