@@ -5,3 +5,14 @@
 #+INFOJS_OPT: toc:t ltoc:t
 #+INFOJS_OPT: view:info mouse:underline buttons:nil
 
+* 推荐文章
+  1. [[https://nmap.org/man/zh/man-port-scanning-basics.html][端口扫描 -- nmap]]
+
+* 端口扫描
+  1. 安装并使用nmap (macOS)
+     #+BEGIN_SRC sh
+     brew install nmap
+     #+END_SRC
+  2. 
+
+  
