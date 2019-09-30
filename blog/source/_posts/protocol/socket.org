@@ -9,7 +9,7 @@ socket相关网络编程
 ** socket
    socket是 [应用层] 与 [传输层, 网络层] 之间的一个抽象层
    它的出现是为了简化网络进程通信
-*** 头文件
+*** linux头文件
      1. usr/include/x86_64-linux-gnu/sys/socket.h
 	结构体
         sockaddr
@@ -60,7 +60,7 @@ socket相关网络编程
        所以这里的recv() 和 send()操作与本机上的文件操作是一样的
     7. close(fd)  shutdown(fd, type)
        linux一切皆是file原则, fd可以关闭
-*** 相关函数
+*** [ip, port]相关函数
     : 点分十进制ip 是以字符串形式存储的
     : 网络字节序 即 32位的二进制
     #+BEGIN_EXAMPLE
@@ -73,7 +73,6 @@ socket相关网络编程
     //in_addr_t
     typedef unsigned long  in_addr_t
     #+END_EXAMPLE
-
 
     1. 函数原型: in_addr_t inet_addr(const char* strptr);
        若字符串有效, 则将点分十进制IP字符串转换为网络字节序地址，否则为INADDR_NONE
@@ -113,29 +112,24 @@ socket相关网络编程
 
 ** socket问题
    1. 阻塞 
-      : 影响并发
+      : 影响并发, 多路复用
       解决方案:
-      1) select
-      2) poll
-      3) epoll (linux特有)
-      4) 多线程 -- 异步问题
-      5) 多进程 -- close问题
+      1) 使用非阻塞模型, 比如select, poll, epoll(linux下特有), IOCP(windows下特有)
+      2) 多线程 -- 不推荐使用
+      3) 多进程 -- 不推荐使用
    2. 粘包
       解决方案:
       1) 限制发送大小
       2) 每个消息增加长度标识
-   3. 同步 异步
-      client端, 与server关系不大
-      同步: 等待结果返回; 返回之前无法操作
-      异步: 等待结果返回, 返回之前可以自由活动
 ** I/O模型
    [[https://mp.weixin.qq.com/s?src=11&timestamp=1565671711&ver=1787&signature=-mLkqQr803XDHb4f3aj9Lf1dJl8uVOV9fCCMMTzs0zSuOYH-qof7nsYCdgho1XLdPQYQP6QL5-WHtI6g-MD9xIsJcuxzdH*idpCZqtzl85r9D4C3XRRuOcCXqLKDzi-i&new=1][强烈建议阅读]]
    (链接过期, 直接搜狗搜索epoll, "epoll本质"即是)
    1. 阻塞式      
    2. 非阻塞
-   3. 复合 -- select
-   4. 复合 -- poll
-   5. 复合 -- epoll (linux特有)
+   3. select
+   4. poll
+   5. epoll (linux特有)
+   6. IOCP (windows特有)
      
 ** epoll使用
 *** epoll本身为我们处理了什么
@@ -159,7 +153,7 @@ socket相关网络编程
    tcp_keepalive_probes （如果对方不予应答，探测包的发送次数）
    #+END_EXAMPLE
 * 编程实例
-** recv() 实际应用
+** 原始socket模型, recv()中处理分包粘包
    原始socket模型,  考虑到tcp分包
    #+BEGIN_SRC C++
      //网络读取 -- 系统检测到网络I/O事件时, 调用该函数
@@ -190,7 +184,8 @@ socket相关网络编程
 	     ZeroMemory(m_cbRecvBuf, sizeof(m_cbRecvBuf));
 	     m_wRecvSize = 0;
 	     return 3;//"数据包太大";
-
+	     }
+    
 	     //解析数据
 	     if (m_wRecvSize == wPacketSize)  //数据全部接受完毕之后 再解析
 	     {		
@@ -216,16 +211,16 @@ socket相关网络编程
 		 //内核命令
 		 if (Command.wMainCmdID == MDM_KN_COMMAND)
 		 {
-		     switch (Command.wSubCmdID)
+		 switch (Command.wSubCmdID)
+		 {
+		     case SUB_KN_DETECT_SOCKET:	//网络检测
 		     {
-			 case SUB_KN_DETECT_SOCKET:	//网络检测
-			 {
-			     //发送数据
-			     SendData(MDM_KN_COMMAND, SUB_KN_DETECT_SOCKET, pDataBuffer, wRealDataSize);
-			     break;
-			 }
+			 //发送数据
+			 SendData(MDM_KN_COMMAND, SUB_KN_DETECT_SOCKET, pDataBuffer, wRealDataSize);
+			 break;
 		     }
-		     continue;
+		 }
+		 continue;
 		 }
 
 		 //处理数据
@@ -234,6 +229,6 @@ socket相关网络编程
 	     };
 
 	     return 0;
-	 }
+     }
    #+END_SRC
 
