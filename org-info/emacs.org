@@ -27,7 +27,6 @@
    [[file:emacs_com/emacs_shortkey.org][emacs按键]]与vim按键 个人理解:
    - emacs功能强大, 却对手指不友好,  更适合在编辑的时候使用
    - vim 功能缺少, 对手指友好, 更适合在查看文档的时候使用
-   std::bind(&GameRoomSink::OnTimerMessagePlayer, shared_from_this(), i, std::placeholders::_1));
 ** elisp
    [[file:emacs_com/emacs_elisp.org][elisp]] 是emacs下的lisp
 
