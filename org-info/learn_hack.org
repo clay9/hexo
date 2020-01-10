@@ -16,3 +16,12 @@
   2. 
 
   
+
+* 清空自己的痕迹
+  linux系统
+  1. 登录失败的痕迹  lastb
+     echo > /var/log/btmp     
+  2. 登录成功的痕迹 last
+     echo > /var/log/wtmp
+  3. 历史命令痕迹 history -c 
+     echo > ./.bash_history //或清空用户目录下的这个文件即可
