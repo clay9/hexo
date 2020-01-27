@@ -11,6 +11,14 @@ git简易指导, 个人使用心得
 * git高级特性
 ** git hooks
    [[https://blog.csdn.net/jessise_zhan/article/details/80131618][参考文档]]
+** 删除大文件
+   1. 寻找大文件
+      git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')"
+   2. 删除大文件
+      git filter-branch -f --prune-empty --index-filter 'git rm -rf --cached --ignore-unmatch your-file-name' --tag-name-filter cat -- --all
+   3. 删除之后
+      git gc --prune=now
+
 * F&Q
   1. 问: 命令行下的git status如何显示中文
      #+BEGIN_EXAMPLE
