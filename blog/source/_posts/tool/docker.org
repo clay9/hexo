@@ -45,3 +45,7 @@ docker容器
 ** 本机与docker容器交互
    1. 文件传输
       docker cp  test  mssql:/home
+   2. 查看镜像ip地址
+      docker inspect --format='{{.Name}} - {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+
+
