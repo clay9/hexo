@@ -24,9 +24,9 @@
    2. 安装镜像
       docker pull microsoft/mssql-server-linux (这个是官网的)
    3. 运行镜像, 创建容器
-      docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=hack@2020" -p 9988:1433 --name mssql -d microsoft/mssql-server-linux
-      docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=hack@2020' -p 9988:1433 --name mssql -d microsoft/mssql-server-linux
+      docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=hack@2020" -p 9985:1433 --name mssql_t -d microsoft/mssql-server-linux
 
+      
       注: 如果不指定映射的端口, 则可能随机使用一个端口
           密码必须8位数, 否则会创建失败
 	  -p 第一个参数为主机端口, 第二参数为docker容器端口
