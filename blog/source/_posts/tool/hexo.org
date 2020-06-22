@@ -1,7 +1,7 @@
 #+TITLE: Hexo搭建blog
 #+LAYOUT: post
 #+CATEGORIES: tool
-#+TAGS: hexo
+#+TAGS:
 
 使用hexo + org-mode + github搭建blog
 #+HTML: <!-- more -->

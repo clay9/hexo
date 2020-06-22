@@ -1,0 +1,62 @@
+#+TITLE: php
+#+LAYOUT: post
+#+CATEGORIES: language
+#+TAGS: 
+#+OPTIONS: ^:nil
+
+php && php框架
+#+HTML: <!-- more -->
+* 说明
+  php是web后端常用的开发语言
+  有cli和fpm版本, cli版本暂时不知道什么用, 
+  fpm版本可以供其他软件使用, 比如apache2, nginx
+
+* 安装
+  强烈推荐使用docker安装php
+  #+BEGIN_EXAMPLE
+  docker install php:7.4.7-fpm
+  #+END_EXAMPLE
+
+* laravel
+  [[https://learnku.com/docs/laravel/7.x][中文翻译文档]]
+  [[https://laravel.com][官方文档]]
+
+  laravel是流行的php框架
+  : 唯一感触就是环境配置真麻烦
+  
+  laravel与hexo非常类似, 都是通过命令生成一个项目.
+  不同的是laravel需要把很多信息打入到php所在的载体中(docker容器或者服务器)(在compose install的时候打入).
+  而hexo则是通过命令, 把源文件生成为静态文件, 静态文件可以被github-page等服务器识别, 供web解析
+  
+* compose
+  compose 解决项目中对php的依赖
+  : mac系统下
+** 安装
+   #+BEGIN_EXAMPLE
+   # 安装compose
+   curl -sS https://getcomposer.org/installer | php
+   # 修改为全局可用
+   sudo mv composer.phar /usr/local/bin/composer
+   # 查看是否安装成功
+   composer --version
+   #+END_EXAMPLE
+
+** 更新源
+   : 国外的源 被墙了
+   #+BEGIN_EXAMPLE
+   # 修改为国内的源
+   composer config -g repo.packagist composer https://packagist.phpcomposer.com
+   #+END_EXAMPLE
+
+
+   
+* pear && pecl
+  : 实际中并未使用到 :)
+  pecl是php扩展池, 
+  pear管理php自身扩展库, 可以在pecl中下载php扩展
+
+* 使用
+  实际使用, 可以参考下面的
+  web服务器 + php + lavarel + 数据库
+  TODONOW 待补充连接
+  

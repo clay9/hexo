@@ -1,6 +1,6 @@
 #+TITLE: C && C++ 常见库
 #+LAYOUT: post
-#+CATEGORIES: c++
+#+CATEGORIES: language
 #+TAGS: 
 #+OPTIONS: ^:nil
 

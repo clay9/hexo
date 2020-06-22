@@ -9,7 +9,7 @@
 * mac系统怎么样
   之前是为了学习linux命令行, 后来是开发环境使用到了xcode.
   mac是一款很稳定的系统, 但是稳定的代价是, 对于大部分游戏都不支持. 所以如果有游戏需求, 非常不建议使用mac. 
-  mac使用了2年了, 缺点很明显, 对游戏的支持差. 优点也不少:
+  17年开始使用mac, 缺点很明显, 对游戏的支持差. 优点也不少:
   1. 稳定
   2. 广告少! 广告少! 广告少!
   3. 命令行学习使用方便
@@ -66,7 +66,7 @@
    4. 依次点开 Root - AppleEnabledInputSources ，会看到一列 item ，找到其中 KeyboardLayout Name 为 ABC 的那一列，将整列 item 删掉，然后 command + S 保存。
    5. 接着重启电脑，打开键盘设置，就可以看到系统自带的 ABC 输入法已经被删掉了
    6. 如果又想用回自带输入法，只要在 偏好设置 - 键盘 - 输入法 里，按 + 号，把自带的输入法重新添加就可以了
-** Terminal显示颜色设置
+** +Terminal显示颜色设置+ 推荐iTerm代替
    1. ls设置为ls -G的别名
       
       在~/.bash_profile中加入下面的内容:
@@ -126,6 +126,8 @@
    　　H 浅灰色粗体
    　　x 系统默认颜色
       #+END_EXAMPLE      
+** +删除不需要的系统软件+ 强烈建议不删除
+
 * mac好用的软件
 ** Alfred
    [[https://www.alfredapp.com][Alfred]] 是加强版的聚焦搜索, 支持自定义编程, 非常强大
@@ -135,13 +137,14 @@
    #+END_EXAMPLE
 ** Karabiner
    [[https://pqrs.org/index.html][Karabiner]] 是一款好用的键位映射软件
-** 1password 
-   [[https://1password.com][1password]] 是非常好用的密码管理软件
-** Manico
+** +1password+
+   +[[https://1password.com][1password]] 是非常好用的密码管理软件+
+   不再推荐使用, 支持不够好, 不如mac自带的好用
+** +Manico+
    +不打开launchpad情形下, 快速打开需要的app软件+
    +使用的[[https://manico.im][manico]], 虽然是收费的, 但是效果确实很不错+
    推荐使用Alfred代替
-** paste
+** +paste+
    +[[https://pasteapp.me][paste]] 非常好用的粘贴复制软件, 记录了之前的复制记录+
    推荐使用Alfred代替
 ** HomeBrew
