@@ -27,7 +27,60 @@ php && php框架
   laravel与hexo非常类似, 都是通过命令生成一个项目.
   不同的是laravel需要把很多信息打入到php所在的载体中(docker容器或者服务器)(在compose install的时候打入).
   而hexo则是通过命令, 把源文件生成为静态文件, 静态文件可以被github-page等服务器识别, 供web解析
-  
+
+** laravel安装adminLTE -- 通过mix方式安装
+   : laravel7.x 安装adminlte2.4
+   
+   1. 下载adminLTE到工程中
+      #+BEGIN_EXAMPLE
+      composer require "almasaeed2010/adminlte=~2.4"
+      #+END_EXAMPLE
+   2. 编写app.scss &&  app.js && webpack.mix.js  TODONOW 如何编写
+      app.scss路径 resources/sass/app.scss
+      app.js路径 resources/js/app.js
+      webpack.mix.js路径 在项目根目录下
+   3. npm install && npm run dev
+      : 项目根目录下执行
+      : npm install 安装js依赖  (根据package.json来安装)
+      : npm run dev 把webpack.mix.js(类似工程项目)中内容编译
+   4. xxx.blade.php代码中引用修改
+      : css文件引用修改
+      : js文件引用修改
+
+      #+BEGIN_EXAMPLE
+      <!DOCTYPE html>
+      <html>
+      <head>
+      .
+      .
+      .
+         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+      </head>
+
+      <body class="hold-transition skin-blue sidebar-mini">
+      .
+      .
+      .
+        <script src="{{ mix('js/app.js') }}"></script>
+      </body>
+      </html>
+      #+END_EXAMPLE
+
+** laravel安装adminLTE -- 直接放到public目录下面即可 TODONOW 待补充
+   1. 把adminLTE代码(github下载的源码) 放到laravel项目的pulic目录中
+   2. 修改项目中对adminLTE的引用路径
+      #+BEGIN_EXAMPLE
+        <!-- Font Awesome -->
+	<link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
+	<!-- icheck bootstrap -->
+	<link rel="stylesheet" href="adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
+      #+END_EXAMPLE
+      注意路径的起始位置为laravel项目的public
+   3. 重启php 与 nginx!!!!!
+      : 需要重启才能生效
+
 * compose
   compose 解决项目中对php的依赖
   : mac系统下
@@ -49,7 +102,6 @@ php && php框架
    #+END_EXAMPLE
 
 
-   
 * pear && pecl
   : 实际中并未使用到 :)
   pecl是php扩展池, 
