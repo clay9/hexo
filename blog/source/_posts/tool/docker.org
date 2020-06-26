@@ -70,3 +70,18 @@ docker容器
    dockerfile -- 对镜像的管理, 可以安装并修改镜像   (类比C++中的class)
    docker-compose -- 对容器的管理, 可以指定使用哪个容器, 并能修改容器 (类比C++中的对象实例)
 
+** 网桥
+   通过指令docker network可以查看 docker中的网桥信息
+   网桥可以使多个容器组件局域网
+
+   1. 容器可以在创建之前选择网桥
+      #+BEGIN_EXAMPLE
+      docker create --name [容器名称] --network [网桥名称] [镜像名称]
+      #+END_EXAMPLE
+   2. 容器也可以在运行状态时 选择网桥
+      #+BEGIN_EXAMPLE
+      docker network connect [网桥名称] [容器名称]
+      #+END_EXAMPLE
+
+
+
