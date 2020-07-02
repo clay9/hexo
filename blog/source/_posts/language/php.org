@@ -130,6 +130,18 @@ php && php框架
 	  #+END_EXAMPLE
     4. 查看php是否开启了对DB的支持(这里以mssql为例)
        详见本文档的 支持mssql && sqlserver
+    5. 数据库表的搭建
+       1) 创建数据库 && 在app/User.php中选择数据库
+	  #+BEGIN_EXAMPLE
+	  protected $connection = 'QPWebDB';
+	  #+END_EXAMPLE
+       2) 在选择的数据库中创建table
+	  #+BEGIN_EXAMPLE
+	  php artisan migrate
+	  #+END_EXAMPLE
+    6. 测试laravel的注册, 登录功能
+       访问 0.0.0.0:8080  进行注册,登录测试
+
 *** web站点访问流程 -- 以登录为例
     : controler 管理类
     : middleware 中间件
