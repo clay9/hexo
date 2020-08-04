@@ -40,11 +40,25 @@ docker容器
      docker run -e "参数"  -P 端口映射 --name 容器名字
      : -p 本机端口 : 容器端口
      : -v 本机路径 : 容器路径
-
   4. 镜像存储为文件 && 加载
      : docker save docker_name -o file_path
      : docker load -i file_path
      在网络不好的情况下, 可以直接使用文件的方式加载镜像
+  5. 容器封装为镜像
+     #+BEGIN_EXAMPLE
+     docker commit [container_id]  [image_name]
+     #+END_EXAMPLE
+  6. image增加tag
+     #+BEGIN_EXAMPLE
+     docker tag [old_image_name]  [new_image_name]
+     #+END_EXAMPLE
+  7. 推送image到github
+     : 必须先登录github   docker login 
+     : 推送的时候image必须增加tag, tag的名字必须为 登录id/image名字
+     : docker 官网速度太慢了, 建议存储为文件, 供别人使用
+     #+BEGIN_EXAMPLE
+     git push image
+     #+END_EXAMPLE
 
 ** 容器操作
   1. 查看容器
@@ -82,6 +96,7 @@ docker容器
       #+BEGIN_EXAMPLE
       docker network connect [网桥名称] [容器名称]
       #+END_EXAMPLE
+
 
 
 

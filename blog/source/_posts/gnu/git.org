@@ -18,6 +18,24 @@ git简易指导, 个人使用心得
       git filter-branch -f --prune-empty --index-filter 'git rm -rf --cached --ignore-unmatch your-file-name' --tag-name-filter cat -- --all
    3. 删除之后
       git gc --prune=now
+* git lfs
+  把大文件排除在git仓库之外, git仓库中只有一个指针指向该大文件
+** 安装lfs
+   #+BEGIN_EXAMPLE
+   curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash &&
+   sudo apt-get install git-lfs &&
+   git lfs install
+   #+END_EXAMPLE
+** 初始化
+   git lfs install
+** 使用
+   1. 过滤大文件
+      git lfs track file_path
+   2. 过滤之后, 会生成.gitattributes
+   3. 提交到远端
+      git push
+   4. 下载大文件
+      git lfs clone url
 
 * F&Q
   1. 问: 命令行下的git status如何显示中文
