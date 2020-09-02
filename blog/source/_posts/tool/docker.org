@@ -41,7 +41,7 @@ docker容器
      : -p 本机端口 : 容器端口
      : -v 本机路径 : 容器路径
   4. 镜像存储为文件 && 加载
-     : docker save docker_name -o file_path
+     : docker save image_name -o file_path
      : docker load -i file_path
      在网络不好的情况下, 可以直接使用文件的方式加载镜像
   5. 容器封装为镜像
@@ -84,6 +84,8 @@ docker容器
    dockerfile -- 对镜像的管理, 可以安装并修改镜像   (类比C++中的class)
    docker-compose -- 对容器的管理, 可以指定使用哪个容器, 并能修改容器 (类比C++中的对象实例)
 
+   : docker-compose 是一个指令, docker-compose.yml是其配置文件 
+   : docker-compose -h查看用法
 ** 网桥
    通过指令docker network可以查看 docker中的网桥信息
    网桥可以使多个容器组件局域网

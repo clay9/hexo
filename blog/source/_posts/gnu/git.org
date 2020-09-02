@@ -56,4 +56,6 @@ git简易指导, 个人使用心得
      1) 对于从没有追踪过的文件, 只需要设置.gitignore即可
      2) 对于已经追踪过的文件, 需要git rm --cached (-r) file 然后再加入到.gitignoe中即可
      #+END_EXAMPLE
+  4. git对大小写不敏感问题, 可以通过下面命令修改
+     : git config core.ignorecase false
 
