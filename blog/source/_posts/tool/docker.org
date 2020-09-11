@@ -37,7 +37,7 @@ docker容器
      docker pull <image name>
   3. 实例化镜像
      镜像实例化为容器 (类比C++中的类--镜像,  对象--容器)
-     docker run -e "参数"  -P 端口映射 --name 容器名字
+     docker run -e "参数"  -P 端口映射 --name 容器名字 -d(后台运行) image名字
      : -p 本机端口 : 容器端口
      : -v 本机路径 : 容器路径
   4. 镜像存储为文件 && 加载
