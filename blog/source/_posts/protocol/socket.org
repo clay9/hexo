@@ -14,8 +14,8 @@ socket相关网络编程
 	结构体
         sockaddr
 	函数
-        socket() connect() send() recv() close()
-	socket() bind()    lisent()  accept() recv() send() close()
+        socket() connect() send() recv() shutdown()
+	socket() bind()    lisent()  accept() recv() send() shutdown()
         g++的默认目录中已经包含了sys/的上层目录
      2. usr/include/netinet/in.h
 	结构体
@@ -26,6 +26,9 @@ socket相关网络编程
 	函数
 	htons()
 	inet_addr()
+     4. unistd.h
+	函数
+	close()
 
 *** socket函数
     1. socket(domain, socket_type, protol)
