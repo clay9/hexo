@@ -52,6 +52,7 @@ socket相关网络编程
     3. connet(fd, sockaddr*, len)
        连接到其他scokaddr
     4. listen(fd, iMaxNum)
+       : iMaxNum是队列中的最大数, 并不是指可连接的socket数目
        一般只在server开启listen(), 监听指定的端口信息
     5. accept()
        accept()会造成阻塞.
