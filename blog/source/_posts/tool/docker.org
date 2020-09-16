@@ -109,3 +109,7 @@ docker容器
        会删除未被容器或者服务副本使用的全部卷。
     5) docker volume rm
        删除未被使用的指定卷
+* 小技巧
+  1. 使用镜像的时候, 不一定要做成容器
+     可以使用
+     : docker run -it image_name
