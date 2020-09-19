@@ -41,3 +41,49 @@
    优点:
    缺点:
    1. 没有存储过程
+
+
+* ODBC
+  1. 安装odbc驱动 
+     : 建议使用官方源码安装
+  2. 安装对应的sql的驱动
+     : 这里sql的驱动是 odbc下的sql驱动
+     以mssql为例
+     下载并安装
+  3. 查看sql的驱动信息
+     : debin在 /usr/local/etc/odbcinst.ini
+     #+BEGIN_EXAMPLE
+     [ODBC Driver 17 for SQL Server]
+     Description=Microsoft ODBC Driver 17 for SQL Server
+     Driver=/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.6.so.1.1
+     UsageCount=1
+     #+END_EXAMPLE
+     说明sql的驱动安装成功
+  4. 编写DSN
+     : debin在 /user/local/etc/odbc.ini
+     #+BEGIN_EXAMPLE
+     [MssqlDB]
+     Driver = ODBC Driver 17 for SQL Server
+     Server = tcp:172.16.238.10,1433
+     #+END_EXAMPLE
+  5. 测试连接
+     #+BEGIN_EXAMPLE
+     isql MssqlDB user_name user_passwd -v 
+     #+END_EXAMPLE
+     
+     如果连接成功
+     #+BEGIN_EXAMPLE
+     +---------------------------------------+
+     | Connected!                            |
+     |                                       |
+     | sql-statement                         |
+     | help [tablename]                      |
+     | quit                                  |
+     |                                       |
+     +---------------------------------------+
+     #+END_EXAMPLE
+     
+     
+
+
+  
