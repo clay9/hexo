@@ -36,6 +36,28 @@ git简易指导, 个人使用心得
       git push
    4. 下载大文件
       git lfs clone url
+* git submodule
+
+  参考文档 https://www.cnblogs.com/nicksheng/p/6201711.html
+
+  当项目越来越庞大之后，不可避免的要拆分成多个子模块，
+  我们希望各个子模块有独立的版本管理，并且由专门的人去维护，这时候我们就要用到git的submodule功能
+
+  #+BEGIN_EXAMPLE
+  git clone <repository> --recursive 递归的方式克隆整个项目
+  git submodule add <repository> <path> 添加子模块
+  git submodule init 初始化子模块
+  git submodule update 更新子模块
+  git submodule foreach git pull 拉取所有子模块
+  #+END_EXAMPLE
+** 拉取子模块
+   - 方法1 
+     1. 先clone父项目
+     2. git submodule init
+     3. git submodule update
+   - 方法2 
+     1. clone 父项目时 加 --recursive
+	git clone url path --recursive
 
 * F&Q
   1. 问: 命令行下的git status如何显示中文
