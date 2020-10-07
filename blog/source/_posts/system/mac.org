@@ -325,4 +325,5 @@
    2. source .bash_profile
    3. locale 查看下是否设置成功
    4. 完成
-
+** ffmpeg
+   ffmpeg -i https://××××××××/really.m3u8 -c copy  xxx.mp4 
