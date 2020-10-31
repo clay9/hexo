@@ -33,7 +33,8 @@ git简易指导, 个人使用心得
       git lfs track file_path
    2. 过滤之后, 会生成.gitattributes
    3. 提交到远端
-      git push
+      git push      -- 提交普通文件
+      git lfs push  -- 提交lfs文件
    4. 下载大文件
       git lfs clone url
 * git submodule
